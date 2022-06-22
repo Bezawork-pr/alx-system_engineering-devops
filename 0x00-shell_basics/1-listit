@@ -1,2 +1,2 @@
 #!/bin/bash
-$ ./1-listit	0-current_working_directory	1-listit	README.md $
+0-current_working_directory	1-listit	README.md 
