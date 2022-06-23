@@ -1,2 +1,2 @@
-#!/bin/bah
-chmod R 711 .
+#!/bin/bash
+chmod -R 711 ./
