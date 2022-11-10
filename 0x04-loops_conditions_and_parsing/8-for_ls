@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#Write a Bash script that displays
+#The content of the current directory
+search_dir="$(pwd)"
+for file in "$(ls "$search_dir")"
+do
+	echo "$file"
+done
