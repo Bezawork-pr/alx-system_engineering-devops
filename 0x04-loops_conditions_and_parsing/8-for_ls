@@ -4,5 +4,5 @@
 search_dir="$(ls)"
 for file in $search_dir
 do
-	echo "$file"
+	echo "$file" | cut -d '-' -f 2
 done
