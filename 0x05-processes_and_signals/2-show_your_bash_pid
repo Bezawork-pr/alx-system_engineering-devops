@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-ps -aux --forest  | grep $BASHPID
+#write a Bash script that displays lines containing the bash word
 # shellcheck disable=SC2009
+ps -aux --forest  | grep bash 
