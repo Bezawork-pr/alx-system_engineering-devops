@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#Write a Bash script that displays
+#To infinity and beyond indefinitely
+#trap "rm -f /tmp/output.txt"
+# shellcheck disable=SC2009
+sudo touch /var/run/myscript.pid
+echo $$  >  /var/run/myscript.pid
+trap 'echo "I hate the kill command"; sudo rm -f /var/run/myscript.pid; exit' SIGTERM
+trap 'echo "Y U no love me?!"' SIGINT
+trap 'sudo rm -f /var/run/myscript.pid; exit' SIGQUIT
+while true; do
+	echo "To infinity and beyond"
+	sleep 2s
+done
