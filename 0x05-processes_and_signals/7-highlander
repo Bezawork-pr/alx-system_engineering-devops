@@ -5,5 +5,5 @@
 while true; do
 	echo "To infinity and beyond"
 	sleep 2s
-	trap 9
+	trap 'echo "I am invincible!!!"' 9
 done
