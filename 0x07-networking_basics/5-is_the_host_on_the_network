@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#pint
+#ping given ip address 5 times
 if [ $# -eq 1 ]
 then
 	ping -c 5 "$1"
