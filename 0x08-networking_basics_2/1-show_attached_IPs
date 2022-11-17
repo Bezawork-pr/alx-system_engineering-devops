@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
 #print active ipv4
 ip -4 -o a | cut -d ' ' -f 2,7 | cut -d '/' -f 1 | cut -d ' ' -f 2 | tac 
-
