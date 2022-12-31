@@ -1,2 +1,1 @@
-This is folder for Shell variable expansions
-
+# <pre> Shell, init files, variables and expansions </pre>
