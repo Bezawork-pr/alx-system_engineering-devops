@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# configure to use the private key ~/.ssh/school
+# configure to refuse to authenticate using a password
+Host *
+  BatchMode yes
+  IdentityFile ~/.ssh/school
