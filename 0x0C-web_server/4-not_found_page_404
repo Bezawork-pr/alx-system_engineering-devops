@@ -2,12 +2,13 @@
 # Edit file with SED to redirect a 301
 apt-get update -y
 apt-get install -y nginx
+mkdir /etc/nginx/html
 sudo nano /etc/nginx/html/index.html
 echo "Hello World!" > /etc/nginx/html/index.html
 sudo nano /usr/share/nginx/html/custom_404.html
 echo "Ceci n'est pas une page" > /usr/share/nginx/html/custom_404.html
 printf %s "server {
-	listen 80 default_server;
+	listen 80;
 	listen [::]:80 default_server;
 
 	root /etc/nginx/html;
@@ -18,10 +19,10 @@ printf %s "server {
 	}
 	
 	error_page 404 /custom_404.html;
-	location = /custom_404.html {
+	location /custom_404.html {
 		root /usr/share/nginx/html;
 		internal;
 	}
 
 }" > /etc/nginx/sites-available/default
-service nginx reload
+service nginx restart
