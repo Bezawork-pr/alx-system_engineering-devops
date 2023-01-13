@@ -7,8 +7,3 @@ file_line { 'Disable_password_authentication':
   replace => true,
 }
 
-file_line { 'Use_private_key':
-  path    => '/etc/ssh/ssh_config',
-  line    => 'Regexes Found',
-  replace => true,
-}
