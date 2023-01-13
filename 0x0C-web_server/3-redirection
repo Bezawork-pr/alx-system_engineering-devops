@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Edit file with SED to redirect a 301
+# Edit file with SED to redirect a 301 and restart nginx
 sudo apt-get update -y
 sudo apt-get install -y nginx
 sudo echo "Hello World!" |  /var/www/html/index.nginx-debian.html
