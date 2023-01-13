@@ -1,28 +1,9 @@
 #!/usr/bin/env bash
-# Edit file with SED to redirect a 301
-apt-get update -y
-apt-get install -y nginx
-mkdir /etc/nginx/html
-sudo nano /etc/nginx/html/index.html
-echo "Hello World!" > /etc/nginx/html/index.html
-sudo nano /usr/share/nginx/html/custom_404.html
-echo "Ceci n'est pas une page" > /usr/share/nginx/html/custom_404.html
-printf %s "server {
-	listen 80;
-	listen [::]:80 default_server;
-
-	root /etc/nginx/html;
-	index index.html index.htm index.nginx-debian.html;
-
-	location /redirect_me {
-		return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4
-	}
-	
-	error_page 404 /custom_404.html;
-	location /custom_404.html {
-		root /usr/share/nginx/html;
-		internal;
-	}
-
-}" > /etc/nginx/sites-available/default
-service nginx restart
+# Edit file with SED to redirect a 301 and restart nginx
+sudo apt-get update -y
+sudo apt-get install -y nginx
+sudo echo "Hello World!" |  /var/www/html/index.nginx-debian.html
+sed -i "/server_name _;/ a\\\trewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default
+sudo /var/www/html/error_404.html
+sed -i "/http {/ a\\\terror_page 404 /error-404.html;" /etc/nginx/nginx.conf
+sudo service nginx restart
