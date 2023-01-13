@@ -3,6 +3,6 @@
 sudo apt-get update -y
 sudo apt-get install -y nginx
 sudo echo "Hello World!" |  /var/www/html/index.nginx-debian.html
-sed -i 's/ˆlocation.*/location \\\/ {' /etc/nginx/sites-available/default
-sed -i 's/ˆtry_files $uri $uri/ =404;.*/return 301 https:\\\/\\\/www.youtube.com\\\/watch?v=QH2-TGUlwu4;'
+sed -i "s/ˆlocation.*/location \\\/ {" /etc/nginx/sites-available/default
+sed -i "s/ˆtry_files \\\$uri \\\$uri/ =404;.*/return 301 https:\\\/\\\/www.youtube.com\\\/watch?v=QH2-TGUlwu4;" /etc/nginx/sites-available/default
 sudo service nginx restart
