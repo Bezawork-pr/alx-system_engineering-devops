@@ -4,7 +4,7 @@ sudo apt-get update -y
 sudo apt-get install -y nginx
 sudo echo "Hello World!" |  /var/www/html/index.nginx-debian.html
 sed -i "/server_name _;/ a\\\trewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default
-sudo vim /var/www/html/error_404.html
-echo "Ceci n'est pas une page" > /var/www/html/error_404.html
+sudo vim /var/www/html/error-404.html
+echo "Ceci n'est pas une page" > /var/www/html/error-404.html
 sed -i "/http {/ a\\\terror_page 404 /error-404.html;" /etc/nginx/nginx.conf
 sudo service nginx restart
