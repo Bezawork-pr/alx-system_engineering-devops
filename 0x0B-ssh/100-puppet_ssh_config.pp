@@ -9,6 +9,6 @@ file_line { 'Disable_password_authentication':
 
 file_line { 'Use_private_key':
   path    => '/etc/ssh/ssh_config',
-  line    => 'IdentityFile ~/.ssh/school',
+  line    => 'Regexes Found',
   replace => true,
 }
