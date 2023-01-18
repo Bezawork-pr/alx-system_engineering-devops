@@ -7,5 +7,5 @@ sed -i "/server_name _;/ a\\\trewrite ^/redirect_me https://www.youtube.com/watc
 sudo vim /var/www/html/error-404.html
 echo "Ceci n'est pas une page" > /var/www/html/error-404.html
 sed -i "/http {/ a\\\terror_page 404 /error-404.html;" /etc/nginx/nginx.conf
-sed -i  "/server {/a\\\tadd_header X-Served-By hostname;" /etc/nginx/nginx.conf
+sed -i  "/server {/a\\\tadd_header X-Served-By $HOSTNAME;" /etc/nginx/sites-available/default
 sudo service nginx restart 
