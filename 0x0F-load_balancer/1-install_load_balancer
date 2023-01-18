@@ -2,13 +2,13 @@
 # Install and configure HAproxy on your lb-01 server
 MY_VAR ="\
 frontend http
-	bind *:80
-	mode http
-	default_backend web_backend
+        bind *:80
+        mode http
+        default_backend web_backend
 backend web_backend
-	balance roundrobin
-	server web-01 34.202.158.152:80 check
-	server web-02 100.25.34.22:80 check
+        balance roundrobin
+        server web-01 34.202.158.152:80 check
+        server web-02 100.25.34.22:80 check
 "
 apt-get install --no-install-recommends software-properties-common
 add-apt-repository ppa:vbernat/haproxy-2.7
