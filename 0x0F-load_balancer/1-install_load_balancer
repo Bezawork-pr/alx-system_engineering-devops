@@ -10,8 +10,9 @@ backend web_backend
         server 76065-web-01 34.202.158.152:80 check
         server 76065-web-02 100.25.34.22:80 check
 "
+apt-get -y update
 apt-get install --no-install-recommends software-properties-common
 add-apt-repository ppa:vbernat/haproxy-2.7
-apt-get install haproxy=2.7.\*
+apt-get -y install haproxy=2.7.\*
 echo "$MY_VAR" >> /etc/haproxy/haproxy.cfg
 service haproxy restart
