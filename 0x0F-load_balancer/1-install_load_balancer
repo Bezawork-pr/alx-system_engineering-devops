@@ -6,13 +6,15 @@ sudo apt-get install -y haproxy
 echo "ENABLED=1" >> /etc/default/haproxy
 
 echo "
-	listen loadbalancer
-	bind 0.0.0.0:80
-	mode http
-	balance roundrobin
-	option httpclose
-	option forwardfor
-	server 76065-web-01 34.202.158.152 check
-	server 76065-web-02 100.25.34.22 check
+    listen load_balancer
+    bind *:80
+    mode http
+    balance roundrobin
+    option httpclose
+    option forwardfor
+    server 76065-web-01 34.202.158.152 check
+    server 76065-web-02 100.25.34.22 check
+    option httpchk
 " >> /etc/haproxy/haproxy.cfg
+
 sudo service haproxy start
