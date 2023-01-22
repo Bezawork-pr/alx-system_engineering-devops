@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Explore docker file using docker exec -t -i holbertonschool/265-0 /bin/bash then execute this command
+sudo service apache2 restart
