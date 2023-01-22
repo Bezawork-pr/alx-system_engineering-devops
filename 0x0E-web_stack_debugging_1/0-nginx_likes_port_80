@@ -4,5 +4,5 @@ sudo service apache2 stop
 sudo apt remove apache2.*
 sudo apt-get update
 sudo apt-get install nginx
-sudo sed -i "s/8080/80/g" /etc/nginx/sites-available/default
+sudo sed -i "s/8080/80/g" /etc/nginx/sites-enabled/default
 sudo service nginx restart
