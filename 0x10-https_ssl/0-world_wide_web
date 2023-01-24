@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+#Configure your domain zone so that the subdomain www points to your load-balancer IP (lb-01)
+print()
+{
+	string1="The subdomain "
+	string2=" is a A record and points to "
+	get_dig=$(dig "$2"."$1" | grep -A1 'ANSWER SECTION:' | awk 'BEGIN{ORS=""}{print $5}')
+	echo -n "$string1"
+	echo -n "$2"
+	echo -n "$string2"
+	echo "$get_dig"
+}
+if [ $# -eq 1 ]
+then
+	print "$1" "www"
+	print "$1" "lb-01"
+	print "$1" "web-01"
+	print "$1" "web-02"
+elif [ $# -eq 2 ]
+then
+	print "$1" "$2"
+fi
+
