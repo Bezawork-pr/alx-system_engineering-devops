@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# copy all database in mysql using mysqldump and archive using the tar command
 mysqldump -u root -p $1 --all-databases > backup.sql
 FILENAME=$(date +"%d-%m-%Y").tgz
 tar -czvf $FILENAME backup.sql
