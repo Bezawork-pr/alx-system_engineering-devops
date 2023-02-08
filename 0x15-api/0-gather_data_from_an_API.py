@@ -24,4 +24,4 @@ if __name__ == "__main__":
     print(string)
     for i in range(len(todos)):
         if todos[i]['completed'] is True:
-            print("\t{}".format(todos[i]['title']))
+            print("\t {}".format(todos[i]['title']))

@@ -10,40 +10,34 @@ users_url = "https://jsonplaceholder.typicode.com/users"
 todos_url = "https://jsonplaceholder.typicode.com/todos"
 
 
-def first_line_formatting(id):
-    """ Check student output formatting """
-
-    todos_count = 0
-    todos_done = 0
+def check_tasks(id):
+    """ Fetch user name, number of tasks """
 
     resp = requests.get(todos_url).json()
-    for i in resp:
-        if i['userId'] == id:
-            todos_count += 1
-        if (i['completed'] and i['userId'] == id):
-            todos_done += 1
 
-    resp = requests.get(users_url).json()
-
-    name = None
-    for i in resp:
-        if i['id'] == id:
-            name = i['name']
-    
     filename = 'student_output'
+    count = 0
     with open(filename, 'r') as f:
-        first = f.readline().strip()
-
-    output = "Employee {} is done with tasks({}/{}):".format(name, todos_done, todos_count)
-
-    
-    print(first)
-    print(output)
-    if first == output:
-        print("First line formatting: OK")
-    else:
-        print("First line formatting: Incorrect")
+        next(f)
+        for line in f:
+            count += 1
+            if line[0] is '\t':
+                print('ok')
+            else:
+                print('Not a tab')
+            if line[0] is ' ':
+                print('ok')
+            else:
+                print('Not a space')
+            if line[0] is '\n':
+                print('ok')
+            else:
+                print('Not a next line')
+            if line[0] is '\t' and line[1] is ' ' and line[-1] is '\n':
+                print("Task {} Formatting: OK".format(count))
+            else:
+                print("Task {} Formatting: Incorrect".format(count))
 
 
 if __name__ == "__main__":
-    first_line_formatting(2)
+    check_tasks(2)
