@@ -19,7 +19,7 @@ if __name__ == "__main__":
         total_task = total_task + 1
         if todos[i]['completed'] is True:
             completed_task = completed_task + 1
-    string = "Employee {} is done with tasks({}/{})".format(
+    string = "Employee {} is done with tasks({}/{}):".format(
                     employee_name, completed_task, total_task)
     print(string)
     for i in range(len(todos)):

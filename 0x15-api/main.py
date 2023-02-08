@@ -1,43 +1,49 @@
 #!/usr/bin/python3
 """
-Check student .CSV output of user information
+Checks student output for returning info from REST API
 """
 
-import csv
 import requests
 import sys
 
-users_url = "https://jsonplaceholder.typicode.com/users?id="
+users_url = "https://jsonplaceholder.typicode.com/users"
 todos_url = "https://jsonplaceholder.typicode.com/todos"
 
 
-def user_info(id):
-    """ Check user information """
+def first_line_formatting(id):
+    """ Check student output formatting """
 
-    total_tasks = 0
-    response = requests.get(todos_url).json()
-    for i in response:
+    todos_count = 0
+    todos_done = 0
+
+    resp = requests.get(todos_url).json()
+    for i in resp:
         if i['userId'] == id:
-            total_tasks += 1
+            todos_count += 1
+        if (i['completed'] and i['userId'] == id):
+            todos_done += 1
 
-    response = requests.get(users_url + str(id)).json()
-    username = response[0]['username']
+    resp = requests.get(users_url).json()
 
-    flag = 0
-    with open("2.csv", 'r') as f:
-        for line in f:
-            if not line == '\n':
-                if not str(id) in line:
-                    print("User ID: Incorrect / ", end='')
-                    flag = 1
-                if not str(username) in line:
-                    print(username)
-                    print("Username: Incorrect")
-                    flag = 1
+    name = None
+    for i in resp:
+        if i['id'] == id:
+            name = i['name']
+    
+    filename = 'student_output'
+    with open(filename, 'r') as f:
+        first = f.readline().strip()
 
-    if flag == 0:
-        print("User ID and Username: OK")
+    output = "Employee {} is done with tasks({}/{}):".format(name, todos_done, todos_count)
+
+    
+    print(first)
+    print(output)
+    if first == output:
+        print("First line formatting: OK")
+    else:
+        print("First line formatting: Incorrect")
 
 
 if __name__ == "__main__":
-    user_info(2)
+    first_line_formatting(2)
