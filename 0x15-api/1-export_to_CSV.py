@@ -29,7 +29,7 @@ if __name__ == "__main__":
         if todos[i]['completed'] is True:
             print("\t{}".format(todos[i]['title']))
     user_id = todos[i].get('userId')
-    user_name = todos[i].get('id')
+    user_name = employee.get('username')
     with open('{}.csv'.format(user_id), 'w', newline='') as csvfile:
         fieldnames = ["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS",
                       "TASK_TITLE"]
