@@ -21,7 +21,7 @@ def user_info(id):
             total_tasks += 1
 
     num_lines = 0
-    with open(str(id) + ".csv", 'r') as f:
+    with open("2.csv", 'r') as f:
         for line in f:
             if not line == '\n':
                 num_lines += 1
@@ -33,4 +33,4 @@ def user_info(id):
 
 
 if __name__ == "__main__":
-    user_info(int(sys.argv[1]))
+    user_info(2)

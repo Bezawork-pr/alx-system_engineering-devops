@@ -30,7 +30,7 @@ if __name__ == "__main__":
             print("\t{}".format(todos[i]['title']))
     user_id = todos[i].get('userId')
     user_name = todos[i].get('id')
-    with open('{}'.format(user_id), 'w', newline='') as csvfile:
+    with open('{}.csv'.format(user_id), 'w', newline='') as csvfile:
         fieldnames = ["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS",
                       "TASK_TITLE"]
         thewriter = csv.DictWriter(csvfile, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
