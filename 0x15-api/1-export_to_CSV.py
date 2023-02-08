@@ -33,7 +33,8 @@ if __name__ == "__main__":
     with open('{}.csv'.format(user_id), 'w', newline='') as csvfile:
         fieldnames = ["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS",
                       "TASK_TITLE"]
-        thewriter = csv.DictWriter(csvfile, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
+        thewriter = csv.DictWriter(csvfile, fieldnames=fieldnames,
+                                   quoting=csv.QUOTE_ALL)
         for i in range(len(todos)):
             completed = todos[i].get('completed')
             title = todos[i].get('title')
