@@ -20,7 +20,8 @@ if __name__ == "__main__":
     my_list = []
     for employee in employees:
         employee_id = employee.get('id')
-        todos = requests.get("{}/todos?userId={}".format(url, employee_id)).json()
+        todos = requests.get("{}/todos?userId={}".format(url,
+                                                         employee_id)).json()
         for task in todos:
             dict_2['username'] = employee.get('username')
             dict_2['task'] = task.get('title')
@@ -31,4 +32,3 @@ if __name__ == "__main__":
         my_list = []
     with open("todo_all_employees.json", "w") as jsonfile:
         json.dump(dict_1, jsonfile)
-        
